@@ -64,6 +64,24 @@
       <script src="turn.js"></script>
       <script>
         $('#album').turn({gradients: true, acceleration: true, display: 'single'});
+        
+            // Function to turn the page based on click position
+        function turnPageOnClick(event) {
+            var clickX = event.pageX - $('#album').offset().left;
+            var flipbookWidth = $('#album').width();
+                
+            // If clicked on the left side, go to the previous page
+            if (clickX < flipbookWidth / 2) {
+              $('#album').turn('previous');
+            }
+                // If clicked on the right side, go to the next page
+            else {
+              $('#album').turn('next');
+            }
+        }
+        $('#album').on('click', turnPageOnClick);
+
+
       </script>
 </body>
 </html>
