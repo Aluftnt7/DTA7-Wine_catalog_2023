@@ -14,8 +14,8 @@
     }
     #album{
         margin: 5% auto;
-        width: 600px;
-        height: 500px;
+        width: 100vw;
+        height: 100vh;
     }
     #wine-bottle{
         background-size: contain;
@@ -23,9 +23,29 @@
         background-position: center;
         backface-visibility: hidden;
     }
+    @media (max-width: 480px) {
+      body {
+         width: 100%;
+      }
+    }
+
+      .flip-content {
+          display: none;
+    }
+
+      .flip-content.active {
+          display: block;
+    }
+
+      @media (min-width: 481px) {
+      .flip-content {
+          width: 50%;
+        }
+    }
+
   </style>
 </head>
-<body>
+<body data-flip-container="true" data-flip-width="600px">
     <div id="album">
         <div id="wine-bottle" style="background-image: url(pr_images/1.png);"></div>
         <div id="wine-bottle" style="background-image: url(pr_images/2.png);"></div>
@@ -41,7 +61,7 @@
       <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
       <script src="turn.js"></script>
       <script>
-        $('#album').turn({gradients: true, acceleration: true});
+        $('#album').turn({gradients: true, acceleration: true, display: 'single'});
       </script>
 </body>
 </html>
