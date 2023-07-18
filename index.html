@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Vertical Flip Book</title>
+  <style>
+    body {
+        overflow: hidden;
+        /* background-image: url(pr_images/bg.jpeg); */
+        background-size: contain;
+        background-repeat: no-repeat;
+        background-position: center;
+        backface-visibility: hidden;
+    }
+    #album{
+        margin: 5% auto;
+        width: 600px;
+        height: 500px;
+    }
+    #wine-bottle{
+        background-size: contain;
+        background-repeat: no-repeat;
+        background-position: center;
+        backface-visibility: hidden;
+    }
+  </style>
+</head>
+<body>
+    <div id="album">
+        <div id="wine-bottle" style="background-image: url(pr_images/1.png);"></div>
+        <div id="wine-bottle" style="background-image: url(pr_images/2.png);"></div>
+        <div id="wine-bottle" style="background-image: url(pr_images/3.png);"></div>
+        <div id="wine-bottle" style="background-image: url(pr_images/4.png);"></div>
+        <div id="wine-bottle" style="background-image: url(pr_images/5.png);"></div>
+        <div id="wine-bottle" style="background-image: url(pr_images/7.png);"></div>
+        <div id="wine-bottle" style="background-image: url(pr_images/8.png);"></div>
+        <div id="wine-bottle" style="background-image: url(pr_images/9.png);"></div>
+        <div id="wine-bottle" style="background-image: url(pr_images/10.png);"></div>
+
+    </div>
+      <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+      <script src="turn.js"></script>
+      <script>
+        $('#album').turn({gradients: true, acceleration: true});
+      </script>
+</body>
+</html>
+
+
+
