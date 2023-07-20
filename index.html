@@ -6,67 +6,71 @@
   <link rel="stylesheet" href="style.css">
 </head>
 <div id="instructions">Tap left & right to navigate</div>
-<body data-flip-container="true" data-flip-width="600px">
+<body >
+  <div data-flip-container="true" data-flip-width="600px" class="album-container">
     <div id="album">
-        <div id="wine-bottle" style="background-image: url(pr_images/1.png);"></div>
-        <div id="wine-bottle" style="background-image: url(pr_images/2.png);"></div>
-        <div id="wine-bottle" style="background-image: url(pr_images/3.png);"></div>
-        <div id="wine-bottle" style="background-image: url(pr_images/4.png);"></div>
-        <div id="wine-bottle" style="background-image: url(pr_images/6.png);"></div>
-        <div id="wine-bottle" style="background-image: url(pr_images/5.png);"></div>
-        <div id="wine-bottle" style="background-image: url(pr_images/7.png);"></div>
-        <div id="wine-bottle" style="background-image: url(pr_images/8.png);"></div>
-        <div id="wine-bottle" style="background-image: url(pr_images/10.png);"></div>
-        <div id="wine-bottle" style="background-image: url(pr_images/9.png);"></div>
-        <div id="wine-bottle" style="background-image: url(pr_images/11.png);"></div>
-        <div id="wine-bottle" style="background-image: url(pr_images/12.png);"></div>
-        <div id="wine-bottle" style="background-image: url(pr_images/13.png);"></div>
-        <div id="wine-bottle" style="background-image: url(pr_images/14.png);"></div>
-        <div id="wine-bottle" style="background-image: url(pr_images/15.png);"></div>
-        <div id="wine-bottle" style="background-image: url(pr_images/16.png);"></div>
-        <div id="wine-bottle" style="background-image: url(pr_images/17.png);"></div>
-        <div id="wine-bottle" style="background-image: url(pr_images/18.png);"></div>
+      <div id="wine-bottle" style="background-image: url(pr_images/1.png);"></div>
+      <div id="wine-bottle" style="background-image: url(pr_images/2.png);"></div>
+      <div id="wine-bottle" style="background-image: url(pr_images/3.png);"></div>
+      <div id="wine-bottle" style="background-image: url(pr_images/4.png);"></div>
+      <div id="wine-bottle" style="background-image: url(pr_images/6.png);"></div>
+      <div id="wine-bottle" style="background-image: url(pr_images/5.png);"></div>
+      <div id="wine-bottle" style="background-image: url(pr_images/7.png);"></div>
+      <div id="wine-bottle" style="background-image: url(pr_images/8.png);"></div>
+      <div id="wine-bottle" style="background-image: url(pr_images/10.png);"></div>
+      <div id="wine-bottle" style="background-image: url(pr_images/9.png);"></div>
+      <div id="wine-bottle" style="background-image: url(pr_images/11.png);"></div>
+      <div id="wine-bottle" style="background-image: url(pr_images/12.png);"></div>
+      <div id="wine-bottle" style="background-image: url(pr_images/13.png);"></div>
+      <div id="wine-bottle" style="background-image: url(pr_images/14.png);"></div>
+      <div id="wine-bottle" style="background-image: url(pr_images/15.png);"></div>
+      <div id="wine-bottle" style="background-image: url(pr_images/16.png);"></div>
+      <div id="wine-bottle" style="background-image: url(pr_images/17.png);"></div>
+      <div id="wine-bottle" style="background-image: url(pr_images/18.png);"></div>
     </div>
-      <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
-      <script src="turn.js"></script>
-      <script>
-        let viewed = 0
-        document.addEventListener('DOMContentLoaded', function() {
-          const instructions = document.getElementById('instructions');
-          function showInstructions() {
-            if (!viewed) {
-              instructions.style.opacity = '1';
-              viewed = 1;
-              setTimeout(hideInstructions, 1500);
-            }
-          }
-          function hideInstructions() {
-            instructions.style.opacity = '0';
-          }
-          showInstructions()
-        });
-        $('#album').turn({gradients: true, acceleration: true, display: 'single', duration:1500});
-        
-            // Function to turn the page based on click position
-        function turnPageOnClick(event) {
-            var clickX = event.pageX - $('#album').offset().left;
-            var flipbookWidth = $('#album').width();
-                
-            // If clicked on the left side, go to the previous page
-            if (clickX < flipbookWidth / 2) {
-              $('#album').turn('previous');
-            }
-                // If clicked on the right side, go to the next page
-            else {
-              $('#album').turn('next');
-            }
+  </div>
+  <div class="button-parent">
+    <button onclick=" $('#album').turn('previous')">&larr;</button>
+    <button onclick=" $('#album').turn('next')"> &rarr;</button>
+  </div>
+  <div>
+  </div>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+  <script src="turn.js"></script>
+  <script>
+    let viewed = 0
+    document.addEventListener('DOMContentLoaded', function () {
+      const instructions = document.getElementById('instructions');
+      function showInstructions() {
+        if (!viewed) {
+          instructions.style.opacity = '1';
+          viewed = 1;
+          setTimeout(hideInstructions, 1500);
         }
-        $('#album').on('click', turnPageOnClick);
+      }
+      function hideInstructions() {
+        instructions.style.opacity = '0';
+      }
+      showInstructions()
+    });
+    $('#album').turn({ gradients: true, acceleration: true, display: 'single', duration: 1500 });
 
+    // Function to turn the page based on click position
+    function turnPageOnClick(event) {
+      var clickX = event.pageX - $('#album').offset().left;
+      var flipbookWidth = $('#album').width();
 
-      </script>
+      // If clicked on the left side, go to the previous page
+      if (clickX < flipbookWidth / 2) {
+        $('#album').turn('previous');
+      }
+      // If clicked on the right side, go to the next page
+      else {
+        $('#album').turn('next');
+      }
+    }
+    $('#album').on('click', turnPageOnClick);
+  </script>
 </body>
+
 </html>
-
-
-
