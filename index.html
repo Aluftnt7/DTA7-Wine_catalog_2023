@@ -5,6 +5,7 @@
   <title>DTA-7 Wine Catalog 2023</title>
   <link rel="stylesheet" href="style.css">
 </head>
+<div id="instructions">Tap left & right to navigate</div>
 <body data-flip-container="true" data-flip-width="600px">
     <div id="album">
         <div id="wine-bottle" style="background-image: url(pr_images/1.png);"></div>
@@ -25,11 +26,25 @@
         <div id="wine-bottle" style="background-image: url(pr_images/16.png);"></div>
         <div id="wine-bottle" style="background-image: url(pr_images/17.png);"></div>
         <div id="wine-bottle" style="background-image: url(pr_images/18.png);"></div>
-
     </div>
       <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
       <script src="turn.js"></script>
       <script>
+        let viewed = 0
+        document.addEventListener('DOMContentLoaded', function() {
+          const instructions = document.getElementById('instructions');
+          function showInstructions() {
+            if (!viewed) {
+              instructions.style.opacity = '1';
+              viewed = 1;
+              setTimeout(hideInstructions, 1500);
+            }
+          }
+          function hideInstructions() {
+            instructions.style.opacity = '0';
+          }
+          showInstructions()
+        });
         $('#album').turn({gradients: true, acceleration: true, display: 'single', duration:1500});
         
             // Function to turn the page based on click position
